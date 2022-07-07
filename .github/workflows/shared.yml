@@ -40,7 +40,7 @@ jobs:
               file_contents = Path(f).read_text()
               lines = file_contents.splitlines()
               for code_line in lines:
-                  if "Console.WriteLine" in code_line:
+                  if "Debug.Log" in code_line:
                       print(code_line)
                       a_file_contains_write_line = True
                       set_env("HAS_WRITE_LINE", "true")
@@ -49,6 +49,7 @@ jobs:
       - name: check
         if: ${{ env.HAS_WRITE_LINE == 'true' }}
         run: echo "$HAS_WRITE_LINE"
+        run: exit 1
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
