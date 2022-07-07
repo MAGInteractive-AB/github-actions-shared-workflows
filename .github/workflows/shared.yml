@@ -32,12 +32,14 @@ jobs:
             files = list(Path(".").rglob("*.[cC][sS]"))
             print("")
             for f in files:
-                print(f)
-                print("---")
-                file_contents = Path(f).read_text()
-                print(file_contents)
-                print("==========")
-                print("")
+              print(f)
+              print("---")
+              file_contents = Path(f).read_text()
+              lines = file_contents.splitlines()
+              for code_line in lines:
+                  if "Console.WriteLine" in code_line:
+                      print(code_line)
+              print("==========")
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
