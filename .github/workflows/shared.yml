@@ -48,8 +48,8 @@ jobs:
               print("==========")
       - name: check
         if: ${{ env.HAS_WRITE_LINE == 'true' }}
-      - cmd: |
-          echo "$HAS_WRITE_LINE"
+        run: echo "$HAS_WRITE_LINE"
+        run: exit 1
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
