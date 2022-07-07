@@ -49,8 +49,8 @@ jobs:
       - name: check
         if: ${{ env.HAS_WRITE_LINE == 'true' }}
       - run: |
-        echo "$HAS_WRITE_LINE"
-        exit 1
+          echo "$HAS_WRITE_LINE"
+          exit 1
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
