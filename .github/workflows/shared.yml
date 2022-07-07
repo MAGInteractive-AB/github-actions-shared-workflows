@@ -40,7 +40,7 @@ jobs:
                   if "Console.WriteLine" in code_line:
                       print(code_line)
                       set_env("HAS_WRITE_LINE", "true")
-                      return
+                      break
               print("==========")
       - name: check
         if: ${{ env.HAS_WRITE_LINE == 'true' }}
