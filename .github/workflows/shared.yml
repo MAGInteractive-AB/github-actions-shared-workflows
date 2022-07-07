@@ -26,8 +26,14 @@ jobs:
         with:
           script: |
             import os
+            from pathlib import Path
             print("Directory contents:")
             for f in os.listdir():
                 print(f)
+                print("---")
+                file_contents = Path(file_path).read_text()
+                print(file_contents)
+                print("==========")
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
