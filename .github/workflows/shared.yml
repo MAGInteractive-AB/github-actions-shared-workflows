@@ -48,7 +48,7 @@ jobs:
               print("==========")
       - name: check
         if: ${{ env.HAS_WRITE_LINE == 'true' }}
-      - run: |
+      - cmd: |
           echo "$HAS_WRITE_LINE"
 
         env:
