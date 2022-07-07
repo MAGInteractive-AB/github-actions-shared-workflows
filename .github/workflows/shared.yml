@@ -26,14 +26,18 @@ jobs:
         with:
           script: |
             import os
+            import glob
             from pathlib import Path
             print("Directory contents:")
-            for f in os.listdir():
+            files = list(Path(".").rglob("*.[cC][sS]"))
+            print("")
+            for f in files:
                 print(f)
                 print("---")
                 file_contents = Path(f).read_text()
                 print(file_contents)
                 print("==========")
+                print("")
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
