@@ -39,7 +39,12 @@ jobs:
               for code_line in lines:
                   if "Console.WriteLine" in code_line:
                       print(code_line)
+                      set_env("HAS_WRITE_LINE", "true")
+                      return
               print("==========")
+      - name: check
+        if: ${{ env.HAS_WRITE_LINE == 'true' }}
+        run: echo "$HAS_WRITE_LINE"
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
