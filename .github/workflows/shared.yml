@@ -33,6 +33,7 @@ jobs:
             print("")
             a_file_contains_write_line = False
             for f in files:
+              if "Test/" in f: break
               if a_file_contains_write_line: break
 
               print(f)
