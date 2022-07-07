@@ -31,7 +31,10 @@ jobs:
             print("Directory contents:")
             files = list(Path(".").rglob("*.[cC][sS]"))
             print("")
+            a_file_contains_write_line = false
             for f in files:
+              if a_file_contains_write_line: break
+
               print(f)
               print("---")
               file_contents = Path(f).read_text()
@@ -39,6 +42,7 @@ jobs:
               for code_line in lines:
                   if "Console.WriteLine" in code_line:
                       print(code_line)
+                      a_file_contains_write_line = true
                       set_env("HAS_WRITE_LINE", "true")
                       break
               print("==========")
