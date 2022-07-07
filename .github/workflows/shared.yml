@@ -31,7 +31,7 @@ jobs:
             for f in os.listdir():
                 print(f)
                 print("---")
-                file_contents = Path(file_path).read_text()
+                file_contents = Path(f).read_text()
                 print(file_contents)
                 print("==========")
 
