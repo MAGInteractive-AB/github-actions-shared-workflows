@@ -51,7 +51,7 @@ jobs:
         uses: actions/github-script@v3
         with:
           script: |
-              core.setFailed('At least one cs file has a Debug.Log file')
+              core.setFailed('At least one cs file has a line that contains [Debug.Log]')
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
