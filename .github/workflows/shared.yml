@@ -43,13 +43,15 @@ jobs:
                   if "Debug.Log" in code_line:
                       print(code_line)
                       a_file_contains_write_line = True
-                      set_env("HAS_WRITE_LINE", "true")
+                      set_env("HAS_DEBUG_LINE", "true")
                       break
               print("==========")
-      - name: check
-        if: ${{ env.HAS_WRITE_LINE == 'true' }}
-        run: echo "$HAS_WRITE_LINE"
-        run: exit 1
+      - name: Check
+        if: ${{ env.HAS_DEBUG_LINE == 'true' }}
+        uses: actions/github-script@v3
+        with:
+          script: |
+              core.setFailed('At least one cs file has a Debug.Log file')
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
