@@ -34,7 +34,7 @@ jobs:
             a_file_contains_write_line = False
             for f in files:
               print(f)
-              if "Test/" or "Tests/" in str(f): break
+              if "Test/" or "Tests/" in str(f): continue
               if a_file_contains_write_line: break
               print("---")
               file_contents = Path(f).read_text()
