@@ -47,7 +47,7 @@ jobs:
                     a_file_contains_write_line = True
                     set_env("HAS_DEBUG_LINE", "true")
                     break
-      - name: Check
+      - name: FailStep
         if: ${{ env.HAS_DEBUG_LINE == 'true' }}
         uses: actions/github-script@v3
         with:
