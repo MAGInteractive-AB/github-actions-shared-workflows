@@ -36,16 +36,17 @@ jobs:
               print(f)
               if "Test/" or "Tests/" in str(f): continue
               if a_file_contains_write_line: break
-              print("---")
               file_contents = Path(f).read_text()
               lines = file_contents.splitlines()
               for code_line in lines:
                   if "Debug.Log" in code_line:
-                      print(code_line)
-                      a_file_contains_write_line = True
-                      set_env("HAS_DEBUG_LINE", "true")
-                      break
-              print("==========")
+                    print("There is a Debug.Log in file: ")
+                    print(f)
+                    print("Code line:")
+                    print(code_line)
+                    a_file_contains_write_line = True
+                    set_env("HAS_DEBUG_LINE", "true")
+                    break
       - name: Check
         if: ${{ env.HAS_DEBUG_LINE == 'true' }}
         uses: actions/github-script@v3
